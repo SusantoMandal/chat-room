@@ -1,0 +1,19 @@
+<div class="home-conatiner">
+  <div>{{ userName }}</div>
+  <div class="message-box">
+    <div v-for="msg in messages" class="message">
+      <p v-if="msg.from == 'self'" class="right-message">{{ msg.message }}</p>
+      <p v-else-if="msg.from == 'notification'">{{ msg.message }}</p>
+      <p v-else class="left-message">{{msg.from}} : {{ msg.message }}</p>
+    </div>
+  </div>
+
+  <div class="input-group mb-3 message-container">
+    <input type="text"  v-model="currentMessage" class="form-control" @keyup.enter="displayMessage()" placeholder="Send Message" aria-label="user's message" aria-describedby="basic-addon2">
+    <button type="button" class="btn btn-outline-success" @click="displayMessage()">Send</button>
+  </div>  
+  <div class="input-group mb-3 message-container">
+    <input type="text" v-model="currentRoom" class="form-control" @keyup.enter="joinRoom()" placeholder="Join Room" aria-label="room id" aria-describedby="basic-addon2">
+    <button type="button" class="btn btn-outline-success" @click="joinRoom()">Join</button>
+  </div>  
+</div>

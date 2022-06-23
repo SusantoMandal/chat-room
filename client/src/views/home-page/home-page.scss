@@ -1,0 +1,26 @@
+.home-conatiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100vw;
+  height: 100vh;
+  padding: 5% 3%;
+
+  .message-box {
+    border: 2px solid black;
+    height: 100%;
+    margin-bottom: 32px;
+    padding: 12px 32px;
+    overflow-y: scroll;
+
+    .message {
+      .right-message {
+        text-align: end;
+      }
+      .left-message {
+        text-align: start;
+      }
+    }
+  }
+
+}
