@@ -5,11 +5,15 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 
-const server = express()
-  .use((req, res) => res.sendFile(path.resolve(process.cwd(), 'client', 'dist', 'index.html')))
-  .listen(PORT, () => console.log(`Server started at port ${PORT}`));
+const app = express();
+app.use(express.static('./client/dist'));
+app.get('*', (req, res)=> {
+  res.sendFile(path.resolve(process.cwd(), 'client', 'dist', 'index.html'))
+});
 
-const io = socketIO(server, {
+const server = app.listen(PORT, () => console.log(`Server started at port ${PORT}`));
+
+const io = socketIO( server, {
   cors: {
     origin: ['http://localhost:8081', 'https://admin.socket.io' , 'https://global-chat-socket.herokuapp.com/']
   }
